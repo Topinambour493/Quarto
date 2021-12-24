@@ -1,4 +1,4 @@
-* {
+*,::before,::after{
     margin: 0;
     padding:0;
 }
@@ -8,46 +8,83 @@ body,html{
     width:100%;
 }
 
+header{
+    display: flex;
+    justify-content: center;
+    height:10vmin;
+    width: 100%;
+}
+
+#centre_header{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
 body{
-    background-color:rgb(202, 165, 41);
+    background-image: url("green_texture.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #jeu{
     width: 100%;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content:space-between;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #pieces{
-    width:30.4vmax;
     display: flex;
-    align-content:flex-start;
     flex-wrap: wrap;
+    justify-content:center;
+    margin-top: 2vmin;
+    margin-bottom: 2vmin;
 }
 
 #plateau{
-    padding:0.9vmax;
-    background-color:blue;
+    padding:0.8vmin;
+    background-image: url("bois_texture.png");
+    background-size: cover;
     border-radius: 5%;
 }
 
-.emplacement_piece {
-    width:9vmax;
-    height:9vmax;
-    margin:0.3vmax;
+.emplacement_piece::before{
+    content:"";
+    background-color:rgb(250, 252, 175);
+    position: absolute;
     border-radius: 50%;
-    background-color: burlywood;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.3;
+}
+
+.emplacement_piece {
+    width:13.5vmin;
+    height:13.5vmin;
+    margin:0.4vmin;
+    border-radius: 50%;
     display: flex;
+    border: 1px solid black;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .pion{
-    padding:0.8vmax;
-    width: 6vmax;
-    height:6vmax;
+    padding:1.2vmin;
+    width: 8.5vmin;
+    height:8.5vmin;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,19 +102,23 @@ body{
 }
 
 .violet{
-    background-color: mediumslateblue; 
+    background-color:white;
+    opacity: 0.3;
 }
 
 .violet_fonce{
-    background-color: rgb(83, 55, 241); 
+    background-image:url("dark_stone_texture.png");
+    background-size:cover;
 }
 
 .vert{
-    background-color:olivedrab; 
+    background-color:grey;
+    opacity: 0.3;
 }
 
 .vert_fonce{
-    background-color:rgb(79, 117, 4); 
+    background-image:url("white_stone_texture.png");
+    background-size:cover;
 }
 
 .rond{
@@ -97,7 +138,3 @@ body{
     clip-path: circle(25% at 50% 50%);
 }
 
-.trou_carre{
-    width: 50%;
-    height: 50%;
-}
