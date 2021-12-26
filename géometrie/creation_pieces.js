@@ -16,11 +16,6 @@ couleurs.forEach(couleur => {
                 `;
                 if (trou=="trou"){
                     document.querySelector(`#p${piece}`).innerHTML='<div class="trou_rond"></div>';  
-                    if (couleur=="vert_fonce"){
-                        document.querySelector(`#p${piece}`).childNodes[0].className+=" vert";
-                    } else {
-                        document.querySelector(`#p${piece}`).childNodes[0].className+=" violet";
-                    }
                 }
                 piece+=1;
             });
