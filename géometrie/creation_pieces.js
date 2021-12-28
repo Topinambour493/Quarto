@@ -1,8 +1,8 @@
-var couleurs=["vert_fonce","violet_fonce"];
+var couleurs=["blanc","noir"];
 var formes=["carre","rond"];
 var tailles=["grand","petit"];
 var trous=["plein","trou"];
-var piece=1;
+var piece=0;
 var pieces=document.getElementById("pieces")
 
 couleurs.forEach(couleur => {

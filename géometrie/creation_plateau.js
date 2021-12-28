@@ -1,5 +1,5 @@
 table = document.querySelector("table")
-locationPiece=1;
+locationPiece=0;
 for (let a = 0; a < 4; a++) {
     tr = document.createElement("tr")
     for (let b = 0; b < 4; b++) {

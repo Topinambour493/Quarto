@@ -30,6 +30,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 #jeu{
@@ -109,12 +110,12 @@ body{
     box-shadow: 3px 3px 3px black;
 }
 
-.violet_fonce{
+.noir{
     background-image:url("dark_stone_texture.png");
     background-size:cover;
 }
 
-.vert_fonce{
+.blanc{
     background-image:url("white_stone_texture.png");
     background-size:cover;
 }
