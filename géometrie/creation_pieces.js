@@ -9,7 +9,8 @@ couleurs.forEach(couleur => {
     formes.forEach(forme => {
         tailles.forEach(taille => {
             trous.forEach(trou => {
-                pieces.innerHTML+=`\ 
+                console.log(pieces.querySelector(`#pieces_${couleur}`));
+                pieces.querySelector(`#pieces_${couleur}`).innerHTML+=`\ 
                     <div class="pion">\
                         <div id='p${piece}' class='${taille} ${forme} ${couleur} ${trou}'></div>\
                     </div>\
