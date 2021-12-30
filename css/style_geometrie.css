@@ -10,7 +10,6 @@ body,html{
 }
 
 body{
-    background-image: url("../images/green_texture.png");
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -20,6 +19,9 @@ body{
     color: black;
     font-size: 4.5vmin;
     font-weight: bold;
+    cursor:default;
+    background-color: green;
+    background-image: url("../images/green_texture.png");
 }
 
 header{
@@ -27,6 +29,7 @@ header{
     display: flex;
     justify-content: center;
     width: 100%;
+    height:14vmin;
 }
 
 header::before{
@@ -45,14 +48,50 @@ header::before{
     position: absolute;
     top:1vmin;
     left:1vmin;
-    font-size: 50%;
+    font-size: 90%;
 }
 
 #droite_header{
     position: absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
+    right:1vmin;
+    font-size: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.règles{
+    padding:0.75vmin;
+    background-color: turquoise;
+}
+
+#bouton_règles{
+    cursor: pointer;
+}
+
+#règles_jeu{
+    font-size: 70%;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:-11vmin;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    z-index: 3;
+}
+
+#mode_jeu{
+    position: absolute;
     top:1vmin;
     right:1vmin;
-    font-size: 50%;
+    font-size: 60%;
 }
 
 #centre_header{
@@ -62,21 +101,27 @@ header::before{
 }
 
 #pseudo{
-    color:yellow;
-}
-
-#rejouer{
     display: flex;
     flex-direction: row;
-    margin:1vmin;
 }
 
-#rejouer > * {
+#action{
+    cursor:pointer;
+    display: flex;
+    flex-direction: row;
+    margin:0.75vmin;
+}
+
+#action > * {
     margin-left:2vmin;
     margin-right: 2vmin;
-    padding:1vmin;
-    background-color: blueviolet;
-    font-size: 70%;
+    padding:0.75vmin;
+    background-color:violet;
+    font-size: 85%;
+}
+
+#gagné{
+    color:black;
 }
 
 #jeu{
@@ -123,8 +168,8 @@ header::before{
 
 .emplacement_piece {
     position: relative;
-    width:13.5vmin;
-    height:13.5vmin;
+    width:13vmin;
+    height:13vmin;
     margin:0.4vmin;
     border-radius: 50%;
     display: flex;
@@ -133,6 +178,11 @@ header::before{
     align-items: center;
     justify-content: center;
     box-shadow: inset 3px 3px 3px black;
+    cursor: pointer;
+}
+
+.emplacement_piece .pion > div{
+    cursor:auto;
 }
 
 .pion{
@@ -147,16 +197,19 @@ header::before{
     z-index: 2;
 }
 
+.pion > div {
+    cursor: pointer;
+    box-shadow: 3px 3px 3px black;
+}
+
 .petit{
     width: 60%;
     height: 60%;
-    box-shadow: 3px 3px 3px black;
 }
 
 .grand{
     width: 100%;
     height: 100%;
-    box-shadow: 3px 3px 3px black;
 }
 
 .noir{

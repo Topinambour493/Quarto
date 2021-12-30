@@ -1,45 +1,74 @@
-mode="expert";
+document.querySelector(`#mode_classique`).addEventListener('click',function(){
+    mode="classique";
+    jouer();
+});
 
-for (let piece=0;piece<16;piece++){
-    document.querySelector(`#p${piece}`).addEventListener('click',function(){
-        if ( ( !document.querySelector("header > .pion") ) && ( document.querySelector(`#pieces #p${piece}`) ) ){
-            console.log(document.querySelector("header > .pion"));
-            document.querySelector("header").append(this.parentElement); 
-            document.querySelector("#action").innerHTML="Place la pièce";
-            if (document.querySelector("#pseudo").innerHTML=="Joueur 1"){
-                document.querySelector("#pseudo").innerHTML="Joueur 2";
-                document.querySelector("#pseudo").style.color="blue";
-            } else {
-                document.querySelector("#pseudo").innerHTML="Joueur 1";
-                document.querySelector("#pseudo").style.color="yellow";
+document.querySelector(`#mode_expert`).addEventListener('click',function(){
+    mode="expert";
+    jouer();
+});
+
+document.querySelector('#bouton_règles').addEventListener('click',function(e){
+    document.querySelector("#règles_jeu").style.display="flex";
+    e.stopPropagation();
+});
+
+document.querySelector('#règles_jeu').addEventListener(('mouseleave'),function(){
+    document.querySelector("#règles_jeu").style.display="none";
+});
+
+document.querySelector('body').addEventListener(('click'),function(){
+    document.querySelector("#règles_jeu").style.display="none";
+});
+
+
+function animation(){
+    for (let piece=0;piece<16;piece++){
+        document.querySelector(`#p${piece}`).addEventListener('click',function(){
+            if ( ( !document.querySelector("header > .pion") ) && ( document.querySelector(`#pieces #p${piece}`) ) ){
+                document.querySelector("header").append(this.parentElement); 
+                document.querySelector("#action").innerHTML="Place la pièce";
+                if (document.querySelector("#pseudo").innerHTML=="Joueur 1"){
+                    document.querySelector("#pseudo").innerHTML="Joueur 2";
+                    document.querySelector("#pseudo").style.color="blue";
+                } else {
+                    document.querySelector("#pseudo").innerHTML="Joueur 1";
+                    document.querySelector("#pseudo").style.color="yellow";
+                }
             }
-        }
-    });
-}
+        });
+    }
 
-for (let locationPiece=0;locationPiece<16;locationPiece++){
-    document.querySelector(`#locP${locationPiece}`).addEventListener('click',function(){
-        if (document.querySelector("header > .pion") && getProperties_piece(locationPiece)==false){
-            console.log(document.querySelector(`#locP${locationPiece}`))
-            document.querySelector(`#locP${locationPiece}`).append(document.querySelector("header > .pion"));
-            document.querySelector("#action").innerHTML="Choisis une pièce";
-            if ( ( isWinLines(locationPiece) ) || ( isWinSquares(locationPiece) ) ){
-                document.querySelector("#pseudo").innerHTML+=", tu as gagné, bravo !";
-                document.querySelector("#action").innerHTML=`\
-                    <div id="rejouer"> \
-                        <div id="mode_clasique">rejouer mode classique</div> \
+    for (let locationPiece=0;locationPiece<16;locationPiece++){
+        document.querySelector(`#locP${locationPiece}`).addEventListener('click',function(){
+            if (document.querySelector("header > .pion") && getProperties_piece(locationPiece)==false){
+                document.querySelector(`#locP${locationPiece}`).append(document.querySelector("header > .pion"));
+                document.querySelector("#action").innerHTML="Choisis une pièce";
+                if ( isWin(locationPiece) ){
+                    document.querySelector("#pseudo").innerHTML+="<div id='gagné'>, tu as gagné, bravo !</div>";
+                    document.querySelector("#action").innerHTML=`\
+                        <div id="mode_classique">rejouer mode classique</div> \
                         <div id="mode_expert">rejouer mode expert</div> \
-                    </div> \
-                `;
+                    `;
+                    document.querySelector(`#mode_classique`).addEventListener('click',function(){
+                        mode="classique";
+                        rejouer();
+                    });
+                    document.querySelector(`#mode_expert`).addEventListener('click',function(){
+                        mode="expert";
+                        rejouer();
+                    });
+                }
             }
-        }
-    });
+        });
+    }
 }
+
 
 // renvoit les propriétés de la piece présente dans l'emplacement i, si il n'y pas de pièce, renvoit false
 function getProperties_piece(i){
     let emplacement_piece=document.querySelector(`#locP${i}`);
-    if (!emplacement_piece.querySelector(".pion")){return false;}
+    if (emplacement_piece.innerHTML==''){return false;}
     return emplacement_piece.querySelector(".pion > div").className.split(' ');
 }
 
@@ -52,7 +81,6 @@ function compare(points_communs,properties_piece){
             points_communs.splice(i,1,false);
         }
     }
-    console.log(points_communs);
     return points_communs;
 }
 

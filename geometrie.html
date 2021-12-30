@@ -9,10 +9,23 @@
     <header>
         <div id="gauche_header">QUARTO!</div>
         <div id="centre_header">
-            <div id="pseudo">Joueur 1</div>
-            <div id="action">Choisis une pièce</div>
+            <div id="pseudo">Bienvenue au QUARTO!</div> 
+            <div id="action">
+                <div id="mode_classique">jouer mode classique</div> 
+                <div id="mode_expert">jouer mode expert</div> 
+            </div>
         </div>
-        <div id="droite_header">mode expert</div>
+        <div id="droite_header">
+            <div id="bouton_règles" class="règles">règles</div>
+        </div>
+        <div id="mode_jeu"></div>
+        <div id="règles_jeu" class="règles"> 
+            <div>Un joueur fait QUARTO et gagne la partie lorsque, en plaçant la pièce donnée,</div>
+            <div>il crée une ligne avec 4 pièces ayant au moins 1 caractère en commun, c'est à dire:</div>
+            <div>4 claires ou 4 foncées ou 4 rondes ou 4 carrées ou 4 grandes ou 4 petites ou 4 pleines ou 4 creuses. </div>
+            <br>
+            <div>Avec le mode expert, on peut aussi gagner en créant un carée avec 4 pièces ayant au moins 1 caractère en commun</div> 
+        </div>
     </header>
     <div id="jeu">
         <div id="pieces">
@@ -26,8 +39,7 @@
     <footer>
         QUARTO! est un jeu de plateau pour 2 joueurs inventé par Blaise Müller et distribué par <a  target="_blank" href="http://www.gigamic.com">Gigamic</a>.
     </footer>
-    <script type="text/javascript" src="js/creation_pieces.js"></script>
-    <script type="text/javascript" src="js/creation_plateau.js"></script>
     <script type="text/javascript" src="js/animation_jeu.js"></script>
+    <script type="text/javascript" src="js/creation_elements_jeu.js"></script>
 </body>
 </html>
