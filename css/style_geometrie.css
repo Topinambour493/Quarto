@@ -10,7 +10,7 @@ body,html{
 }
 
 body{
-    background-image: url("green_texture.png");
+    background-image: url("../images/green_texture.png");
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -102,7 +102,7 @@ header::before{
 
 #plateau{
     padding:0.8vmin;
-    background-image: url("bois_texture.png");
+    background-image: url("../images/bois_texture.png");
     background-size: cover;
     border-radius: 5%;
     box-shadow: 3px 3px 3px black;
@@ -160,12 +160,12 @@ header::before{
 }
 
 .noir{
-    background-image:url("dark_stone_texture.png");
+    background-image:url("../images/dark_stone_texture.png");
     background-size:cover;
 }
 
 .blanc{
-    background-image:url("white_stone_texture.png");
+    background-image:url("../images/white_stone_texture.png");
     background-size:cover;
 }
 
