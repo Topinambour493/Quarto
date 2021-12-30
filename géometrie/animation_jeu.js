@@ -25,6 +25,12 @@ for (let locationPiece=0;locationPiece<16;locationPiece++){
             document.querySelector("#action").innerHTML="Choisis une pièce";
             if ( ( isWinLines(locationPiece) ) || ( isWinSquares(locationPiece) ) ){
                 document.querySelector("#pseudo").innerHTML+=", tu as gagné, bravo !";
+                document.querySelector("#action").innerHTML=`\
+                    <div id="rejouer"> \
+                        <div id="mode_clasique">rejouer mode classique</div> \
+                        <div id="mode_expert">rejouer mode expert</div> \
+                    </div> \
+                `;
             }
         }
     });

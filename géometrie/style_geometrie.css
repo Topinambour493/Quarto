@@ -15,28 +15,68 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-family: Times, "Times New Roman", Georgia, serif;
     color: black;
-    font-size: 2.4em;
+    font-size: 4.5vmin;
     font-weight: bold;
 }
 
 header{
+    position: relative;
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
+header::before{
+    content:"";
+    background-color:rgb(250, 252, 175);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+#gauche_header{
+    position: absolute;
+    top:1vmin;
+    left:1vmin;
+    font-size: 50%;
+}
+
+#droite_header{
+    position: absolute;
+    top:1vmin;
+    right:1vmin;
+    font-size: 50%;
+}
+
 #centre_header{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
 }
 
 #pseudo{
     color:yellow;
+}
+
+#rejouer{
+    display: flex;
+    flex-direction: row;
+    margin:1vmin;
+}
+
+#rejouer > * {
+    margin-left:2vmin;
+    margin-right: 2vmin;
+    padding:1vmin;
+    background-color: blueviolet;
+    font-size: 70%;
 }
 
 #jeu{
@@ -92,15 +132,14 @@ header{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
     box-shadow: inset 3px 3px 3px black;
 }
 
 .pion{
     position: relative;
     padding:1.2vmin;
-    width: 8.5vmin;
-    height:8.5vmin;
+    width: 9vmin;
+    height:9vmin;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,8 +148,8 @@ header{
 }
 
 .petit{
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 60%;
     box-shadow: 3px 3px 3px black;
 }
 
@@ -145,6 +184,35 @@ header{
     width: 50%;
     height: 50%;
     border-radius: 50%;
-    box-shadow: inset 3px 3px 1.3vmin black;
 ;}
 
+.petit > .trou_rond{
+    box-shadow: inset 3px 3px 0.75vmin black;
+}
+
+.grand > .trou_rond{
+    box-shadow: inset 3px 3px 1.3vmin black;
+}
+
+footer{
+    position:relative;
+    padding:1vmin;
+    font-size: 2vmin;
+}
+
+footer::before{
+    content:"";
+    background-color:rgb(250, 252, 175);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+a {
+
+    color: black;
+  }
