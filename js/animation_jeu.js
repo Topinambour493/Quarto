@@ -1,10 +1,12 @@
 document.querySelector(`#mode_classique`).addEventListener('click',function(){
     mode="classique";
+    defineNameJoueurs()
     jouer();
 });
 
 document.querySelector(`#mode_expert`).addEventListener('click',function(){
     mode="expert";
+    defineNameJoueurs()
     jouer();
 });
 
@@ -27,13 +29,12 @@ function animation(){
         document.querySelector(`#p${piece}`).addEventListener('click',function(){
             if ( ( !document.querySelector("header > .pion") ) && ( document.querySelector(`#pieces #p${piece}`) ) ){
                 document.querySelector("header").append(this.parentElement); 
+                this.className+=" cursor_default";
                 document.querySelector("#action").innerHTML="Place la pièce";
-                if (document.querySelector("#pseudo").innerHTML=="Joueur 1"){
-                    document.querySelector("#pseudo").innerHTML="Joueur 2";
-                    document.querySelector("#pseudo").style.color="blue";
+                if (document.querySelector("#pseudo").innerHTML==joueurs[0]){
+                    document.querySelector("#pseudo").innerHTML=`${joueurs[1]}`;
                 } else {
-                    document.querySelector("#pseudo").innerHTML="Joueur 1";
-                    document.querySelector("#pseudo").style.color="yellow";
+                    document.querySelector("#pseudo").innerHTML=`${joueurs[0]}`;
                 }
             }
         });
@@ -45,7 +46,8 @@ function animation(){
                 document.querySelector(`#locP${locationPiece}`).append(document.querySelector("header > .pion"));
                 document.querySelector("#action").innerHTML="Choisis une pièce";
                 if ( isWin(locationPiece) ){
-                    document.querySelector("#pseudo").innerHTML+="<div id='gagné'>, tu as gagné, bravo !</div>";
+                    document.querySelector("#jeu").innerHTML+='<div id="quarto" class="centre">QUARTO!</div>';
+                    lockJeu();
                     document.querySelector("#action").innerHTML=`\
                         <div id="mode_classique">rejouer mode classique</div> \
                         <div id="mode_expert">rejouer mode expert</div> \
@@ -65,10 +67,21 @@ function animation(){
 }
 
 
+//plus possible de clickez dans la zone de jeu
+function lockJeu(){
+    document.querySelector("#jeu").style.pointerEvents="none";
+}
+
+// possible de clickez dans la zone de jeu
+function unlockJeu(){
+    document.querySelector("#jeu").style.pointerEvents="auto";
+}
+
 // renvoit les propriétés de la piece présente dans l'emplacement i, si il n'y pas de pièce, renvoit false
 function getProperties_piece(i){
     let emplacement_piece=document.querySelector(`#locP${i}`);
-    if (emplacement_piece.innerHTML==''){return false;}
+    if (!emplacement_piece){return false;}
+    if (emplacement_piece.innerHTML==""){return false;}
     return emplacement_piece.querySelector(".pion > div").className.split(' ');
 }
 
@@ -186,4 +199,16 @@ function isWin(locP){
         if ( isWinSquares(locP) ){return true;}
     }
     return false;
+}
+
+function defineNameJoueurs(){
+    let pseudoJ1=document.querySelector('#pseudoJ1').value;
+    let pseudoJ2=document.querySelector('#pseudoJ2').value;
+
+    if (pseudoJ1 && pseudoJ1.trim()){
+        joueurs[0]=pseudoJ1;
+    } 
+    if (pseudoJ2 && pseudoJ2.trim()){
+        joueurs[1]=pseudoJ2;
+    } 
 }

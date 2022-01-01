@@ -7,24 +7,31 @@
 </head>
 <body>
     <header>
-        <div id="gauche_header">QUARTO!</div>
+        <div id="gauche_header">QUARTO!<div id="bouton_règles" class="règles">Règles</div></div>
         <div id="centre_header">
             <div id="pseudo">Bienvenue au QUARTO!</div> 
             <div id="action">
-                <div id="mode_classique">jouer mode classique</div> 
-                <div id="mode_expert">jouer mode expert</div> 
+                <div id="mode_classique">Jouer mode classique</div> 
+                <div id="mode_expert">Jouer mode expert</div> 
+            </div>
+            <div class="choix_pseudo centre">
+                <label for="pseudoJ1">Nom Joueur 1:</label>
+                <input type="text" name="pseudoJ1" id="pseudoJ1">
+            </div>
+            <div class="choix_pseudo centre">
+                <label for="pseudoJ2">Nom Joueur 2:</label>
+                <input type="text" name="pseudoJ2" id="pseudoJ2">
             </div>
         </div>
-        <div id="droite_header">
-            <div id="bouton_règles" class="règles">règles</div>
-        </div>
         <div id="mode_jeu"></div>
-        <div id="règles_jeu" class="règles"> 
+        <div id="règles_jeu" class="règles centre"> 
+            <div>Mode classique:</div>
             <div>Un joueur fait QUARTO et gagne la partie lorsque, en plaçant la pièce donnée,</div>
-            <div>il crée une ligne avec 4 pièces ayant au moins 1 caractère en commun, c'est à dire:</div>
-            <div>4 claires ou 4 foncées ou 4 rondes ou 4 carrées ou 4 grandes ou 4 petites ou 4 pleines ou 4 creuses. </div>
+            <div>il crée une ligne verticale, horizontale ou diagonale avec</div>  
+            <div>4 pièces ayant au moins 1 caractère en commun (taille, forme, couleur, percée ou non)</div>
             <br>
-            <div>Avec le mode expert, on peut aussi gagner en créant un carée avec 4 pièces ayant au moins 1 caractère en commun</div> 
+            <div>Mode expert:</div> 
+            <div>4 pièces ayant au moins 1 caractère en commun formant un carré permet également de gagner</div> 
         </div>
     </header>
     <div id="jeu">
