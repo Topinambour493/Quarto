@@ -1,3 +1,5 @@
+document.querySelector(`#pseudoJ1`).focus()
+
 document.querySelector(`#mode_classique`).addEventListener('click',function(){
     mode="classique";
     defineNameJoueurs()
@@ -44,26 +46,42 @@ function animation(){
         document.querySelector(`#locP${locationPiece}`).addEventListener('click',function(){
             if (document.querySelector("header > .pion") && getProperties_piece(locationPiece)==false){
                 document.querySelector(`#locP${locationPiece}`).append(document.querySelector("header > .pion"));
+                document.querySelector(`#locP${locationPiece}`).className+=" cursor_default";
                 document.querySelector("#action").innerHTML="Choisis une pièce";
                 if ( isWin(locationPiece) ){
-                    document.querySelector("#jeu").innerHTML+='<div id="quarto" class="centre">QUARTO!</div>';
-                    lockJeu();
-                    document.querySelector("#action").innerHTML=`\
-                        <div id="mode_classique">rejouer mode classique</div> \
-                        <div id="mode_expert">rejouer mode expert</div> \
-                    `;
-                    document.querySelector(`#mode_classique`).addEventListener('click',function(){
-                        mode="classique";
-                        rejouer();
-                    });
-                    document.querySelector(`#mode_expert`).addEventListener('click',function(){
-                        mode="expert";
-                        rejouer();
-                    });
+                    endGame("QUARTO!");
+                } else if ( isEquality()){
+                    endGame("ÉGALITÉ!");
                 }
             }
         });
     }
+}
+
+function isEquality(){
+    if ( ( document.querySelector("#pieces").children[0].childElementCount == 0 ) 
+    && ( document.querySelector("#pieces").children[1].childElementCount == 0 ) ){
+        return true;
+    }
+    return false;
+}
+
+//affiche la fin de partie et le menu pour en commencer ue nouvelle
+function endGame(message){
+    document.querySelector("#jeu").innerHTML+=`<div id="quarto" class="centre">${message}</div>`;
+    lockJeu();
+    document.querySelector("#action").innerHTML=`\
+        <div id="mode_classique">rejouer mode classique</div> \
+        <div id="mode_expert">rejouer mode expert</div> \
+    `;
+    document.querySelector(`#mode_classique`).addEventListener('click',function(){
+        mode="classique";
+        rejouer();
+    });
+    document.querySelector(`#mode_expert`).addEventListener('click',function(){
+        mode="expert";
+        rejouer();
+    });
 }
 
 
@@ -82,7 +100,9 @@ function getProperties_piece(i){
     let emplacement_piece=document.querySelector(`#locP${i}`);
     if (!emplacement_piece){return false;}
     if (emplacement_piece.innerHTML==""){return false;}
-    return emplacement_piece.querySelector(".pion > div").className.split(' ');
+    let classPiece=emplacement_piece.querySelector(".pion > div").className.split(' ');
+    classPiece.splice(4,(classPiece.length-4));
+    return classPiece;
 }
 
 //renvoit false si il n'y a pas de points communs, sinon renvoit les points communs
@@ -208,7 +228,7 @@ function defineNameJoueurs(){
     if (pseudoJ1 && pseudoJ1.trim()){
         joueurs[0]=pseudoJ1;
     } 
-    if (pseudoJ2 && pseudoJ2.trim()){
+    if (pseudoJ2 && pseudoJ.trim()){
         joueurs[1]=pseudoJ2;
     } 
 }

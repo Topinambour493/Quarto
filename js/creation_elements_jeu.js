@@ -49,7 +49,6 @@ function jouer(){
                             <div id='p${piece}' class='${taille} ${forme} ${couleur} ${trou}'></div>\
                         </div>\
                     `;
-                    console.log(piece,taille,forme,couleur,trou)
                     if (trou=="trou"){
                         document.querySelector(`#p${piece}`).className+=' centre'; 
                         document.querySelector(`#p${piece}`).innerHTML='<div class="trou_rond"></div>';  

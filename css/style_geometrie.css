@@ -287,7 +287,8 @@ a {
 }
 
 input[type="text"]{
-    background-color: blanchedalmond;
+    position:relative;
+    background-color:rgb(247, 219, 163);
     width: 20vmin;
     height:4vmin;
     align-items: center;
@@ -295,4 +296,3 @@ input[type="text"]{
     text-align: center;
     font-size:50%;
 }
-
