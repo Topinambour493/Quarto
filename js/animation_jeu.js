@@ -1,5 +1,3 @@
-document.querySelector(`#pseudoJ1`).focus()
-
 document.querySelector(`#mode_classique`).addEventListener('click',function(){
     mode="classique";
     defineNameJoueurs()
@@ -25,6 +23,16 @@ document.querySelector('body').addEventListener(('click'),function(){
     document.querySelector("#règles_jeu").style.display="none";
 });
 
+document.querySelector('#couleurJ1').addEventListener(('change'),function(){
+    joueur1["couleur"]=document.querySelector('#couleurJ1').value;
+    document.querySelector("#pseudoJ1").style.color=`${joueur1["couleur"]}`;
+});
+
+document.querySelector('#couleurJ2').addEventListener(('change'),function(){
+    joueur2["couleur"]=document.querySelector('#couleurJ2').value;
+    document.querySelector("#pseudoJ2").style.color=`${joueur2["couleur"]}`;
+});
+
 
 function animation(){
     for (let piece=0;piece<16;piece++){
@@ -33,10 +41,12 @@ function animation(){
                 document.querySelector("header").append(this.parentElement); 
                 this.className+=" cursor_default";
                 document.querySelector("#action").innerHTML="Place la pièce";
-                if (document.querySelector("#pseudo").innerHTML==joueurs[0]){
-                    document.querySelector("#pseudo").innerHTML=`${joueurs[1]}`;
+                if (document.querySelector("#pseudo").innerHTML==joueur1["pseudo"]){
+                    document.querySelector("#pseudo").innerHTML=`${joueur2["pseudo"]}`;
+                    document.querySelector("#pseudo").style.color=`${joueur2["couleur"]}`;
                 } else {
-                    document.querySelector("#pseudo").innerHTML=`${joueurs[0]}`;
+                    document.querySelector("#pseudo").innerHTML=`${joueur1["pseudo"]}`;
+                    document.querySelector("#pseudo").style.color=`${joueur1["couleur"]}`;
                 }
             }
         });
@@ -226,9 +236,9 @@ function defineNameJoueurs(){
     let pseudoJ2=document.querySelector('#pseudoJ2').value;
 
     if (pseudoJ1 && pseudoJ1.trim()){
-        joueurs[0]=pseudoJ1;
+        joueur1["pseudo"]=pseudoJ1;
     } 
-    if (pseudoJ2 && pseudoJ.trim()){
-        joueurs[1]=pseudoJ2;
+    if (pseudoJ2 && pseudoJ2.trim()){
+        joueur2["pseudo"]=pseudoJ2;
     } 
 }

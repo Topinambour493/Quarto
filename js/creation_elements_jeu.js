@@ -1,4 +1,13 @@
-var joueurs=["Joueur 1","Joueur 2"];
+var joueur1={"couleur":"","pseudo":"Joueur 1"};
+var joueur2={"couleur":"","pseudo":"Joueur 2"};
+var joueurs=[joueur1,joueur2];
+
+
+document.querySelector(`#pseudoJ1`).focus()
+joueur1["couleur"]=document.querySelector('#couleurJ1').value;
+document.querySelector("#pseudoJ1").style.color=`${joueur1["couleur"]}`;
+joueur2["couleur"]=document.querySelector('#couleurJ2').value;
+document.querySelector("#pseudoJ2").style.color=`${joueur2["couleur"]}`;
 
 // création des emplacements du plateau
 table = document.querySelector("table")
@@ -32,10 +41,12 @@ function jouer(){
     var pieces=document.getElementById("pieces")
 
     //remplissage du header
+    let premierJoueur=joueurs[Math.floor(Math.random() * 2)];
     document.querySelector("#centre_header").innerHTML=`\
-        <div id="pseudo">${joueurs[Math.floor(Math.random() * 2)]}</div> \
+        <div id="pseudo">${premierJoueur["pseudo"]}</div> \
         <div id="action">Choisis une pièce</div> \
     `;
+    document.querySelector("#pseudo").style.color=`${premierJoueur["couleur"]}`;
     document.querySelector("#mode_jeu").innerHTML = `mode ${mode}`;
 
     //création des pièces
