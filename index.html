@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>QUARTO!</title>
+    <link rel="stylesheet" href="css/style_geometrie.css" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div id="gauche_header">QUARTO!<div id="bouton_règles" class="règles">Règles</div></div>
+        <div id="centre_header">
+            <div id="pseudo">Bienvenue au QUARTO!</div> 
+            <div id="action">
+                <div id="mode_classique">Jouer mode classique</div> 
+                <div id="mode_expert">Jouer mode expert</div> 
+            </div>
+            <div class="choix_pseudo centre">
+                <label for="pseudoJ1">Nom Joueur 1:</label>
+                <input type="text" name="pseudoJ1" id="pseudoJ1" spellcheck="false">
+                <input type="color" id="couleurJ1" name="couleurJ1" value="#ff0000">
+            </div>
+            <div class="choix_pseudo centre">
+                <label for="pseudoJ2">Nom Joueur 2:</label>
+                <input type="text" name="pseudoJ2" id="pseudoJ2" spellcheck="false">
+                <input type="color" id="couleurJ2" name="couleurJ2" value="#0000ff">
+            </div>
+        </div>
+        <div id="mode_jeu"></div>
+        <div id="règles_jeu" class="règles centre"> 
+            <div>Mode classique:</div>
+            <div>Un joueur fait QUARTO et gagne la partie lorsque, en plaçant la pièce donnée,</div>
+            <div>il crée une ligne verticale, horizontale ou diagonale avec</div>  
+            <div>4 pièces ayant au moins 1 caractère en commun (taille, forme, couleur, percée ou non)</div>
+            <br>
+            <div>Mode expert:</div> 
+            <div>4 pièces ayant au moins 1 caractère en commun formant un carré permet également de gagner</div> 
+        </div>
+    </header>
+    <div id="jeu">
+        <div id="pieces">
+            <div id="pieces_blanc"></div>
+            <div id="pieces_noir"></div>
+        </div>
+        <div id="plateau">
+            <table></table>
+        </div>
+    </div>
+    <footer>
+        QUARTO! est un jeu de plateau pour 2 joueurs inventé par Blaise Müller et distribué par <a  target="_blank" href="http://www.gigamic.com">Gigamic</a>.
+    </footer>
+    <script type="text/javascript" src="js/animation_jeu.js"></script>
+    <script type="text/javascript" src="js/creation_elements_jeu.js"></script>
+</body>
+</html>
