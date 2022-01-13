@@ -23,7 +23,7 @@ body{
     justify-content: space-between;
     font-family: Times, "Times New Roman", Georgia, serif;
     color: black;
-    font-size: 4.5vmin;
+    font-size: 4vmin;
     font-weight: bold;
     cursor:default;
     background-color: green;
@@ -62,7 +62,7 @@ header::before{
     bottom:0;
     margin:auto;
     right:1vmin;
-    font-size: 60%;
+    font-size: 55%;
     display: flex;
 }
 
@@ -95,7 +95,7 @@ header::before{
     position: absolute;
     top:1vmin;
     right:1vmin;
-    font-size: 60%;
+    font-size: 55%;
 }
 
 #centre_header{
@@ -130,7 +130,7 @@ header::before{
     margin-right: 2vmin;
     padding:0.75vmin;
     background-color:violet;
-    font-size: 85%;
+    font-size: 80%;
 }
 
 #gagné{
