@@ -1,2 +1,2 @@
-# quarto
-C'est un jeu 2 joueurs 
+# Quarto
+C'est l'adaptation du jeu de société Quarto créé par Blaise Müller.
